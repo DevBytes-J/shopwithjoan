@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand palette extracted from Figma design */
+  --brand-cream: #F7F4ED;
+  --brand-forest: #173E32;
+  --brand-sand: #D8C393;
+  --brand-sage-muted: #68736A;
+  --brand-border: #D9DDD4;
+  --brand-border-pill: #D7D9CF;
+  --brand-surface: #F0EEE6;
+  --brand-surface-light: #EEEFE7;
+  --brand-sage-light: #E3E7DF;
+  --brand-white: #FFFFFF;
+
+  --background: var(--brand-cream);
+  --foreground: var(--brand-forest);
+}
+
+@theme {
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-forest: var(--brand-forest);
+  --color-brand-sand: var(--brand-sand);
+  --color-brand-sage-muted: var(--brand-sage-muted);
+  --color-brand-border: var(--brand-border);
+  --color-brand-border-pill: var(--brand-border-pill);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-surface-light: var(--brand-surface-light);
+  --color-brand-sage-light: var(--brand-sage-light);
+  --color-brand-white: var(--brand-white);
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--brand-cream);
+  color: var(--brand-forest);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

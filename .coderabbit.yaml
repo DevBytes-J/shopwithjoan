@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "en-US"
+early_access: false
+tone_instructions: "Be rigorous, concise, and prioritize security vulnerabilities, memory/state leaks, input sanitization, and OWASP Top 10 risks."
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: true
+  high_level_summary: true
+  poem: false
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "main"
+      - "master"
+      - "develop"
+
+  tools:
+    shellcheck:
+      enabled: true
+    eslint:
+      enabled: true
+    gitleaks:
+      enabled: true
+    markdownlint:
+      enabled: true
+
+  path_filters:
+    - "!node_modules/**"
+    - "!.next/**"
+    - "!pnpm-lock.yaml"
+    - "!public/**"
+
+  path_instructions:
+    - path: "app/api/**"
+      instructions: "Check strictly for authentication, authorization, rate limiting, and input validation. Prevent any SSRF, SQL injection, or unvalidated redirect attacks."
+    - path: "app/(admin)/**"
+      instructions: "Ensure admin routes are strictly guarded and cannot be bypassed via client-side routing. Verify server-side session checks."
+    - path: "next.config.ts"
+      instructions: "Ensure security headers (CSP, HSTS, X-Frame-Options) remain strict and are not downgraded."
+
+chat:
+  auto_reply: true
+
+knowledge_base:
+  opt_out: false
