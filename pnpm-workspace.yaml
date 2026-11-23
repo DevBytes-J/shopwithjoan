@@ -1,2 +1,6 @@
+allowBuilds:
+  '@prisma/engines': true
+  prisma: true
+
 minimumReleaseAgeExclude:
   - lucide-react@1.77.0

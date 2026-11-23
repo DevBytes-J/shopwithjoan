@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProductStatus {
+  AVAILABLE
+  SOLD_OUT
+  DRAFT
+}
+
+model Product {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  price       Float
+  description String?
+  images      String[]      @default([])
+  category    String        @default("All")
+  sizes       String[]      @default([])
+  colors      String[]      @default([])
+  status      ProductStatus @default(AVAILABLE)
+  isFeatured  Boolean       @default(false)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([category])
+  @@index([status])
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String   @default("Joan")
+  createdAt DateTime @default(now())
+}
